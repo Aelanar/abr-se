@@ -52,14 +52,23 @@ public class testOne {
 	@Test
 	public void testToList(){
 		ABR a = new ABR();
+		ABR c = new ABR();
 		a.insert(1);
 		a.insert(2);
 		a.insert(0);
+		for (int i=0;i<30;i++){
+			c.insert(i);
+		}
 		ArrayList<Integer> b = a.toList();
+		ArrayList<Integer> d = c.toList();
+		
 		assertTrue(b.contains(0));
 		assertTrue(b.contains(1));
 		assertTrue(b.contains(2));
 		assertFalse(b.contains(42));
+		
+		System.out.print(d);
+		
 	}
 	
 	

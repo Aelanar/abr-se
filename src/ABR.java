@@ -90,9 +90,9 @@ public class ABR {
 	private ArrayList<Integer> toList2(ArrayList<Integer> list){
 		if (this.isEmpty()){
 		}else{
+			this.getG().toList2(list);
 			list.add(this.getRootValue());
 			this.getD().toList2(list);
-			this.getG().toList2(list);
 			
 		}
 		return list;
