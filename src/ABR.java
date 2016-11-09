@@ -1,4 +1,5 @@
 package ABR;
+import java.util.ArrayList;
 
 public class ABR {
 
@@ -48,6 +49,7 @@ public class ABR {
 		}
 	}
 	
+	//Insert
 	public void insert(int value){
 		if(this.isEmpty()){
 			this.valueNode = value;
@@ -64,4 +66,36 @@ public class ABR {
 		}
 		
 	}
+	
+	//Contains
+	public boolean contains(int value){
+		if(this.isEmpty()){
+			return false;
+		}else{
+			if(this.getRootValue()>value){
+				return this.getG().contains(value);
+			}else if(this.getRootValue()<value){
+				return this.getD().contains(value);
+			}else{
+				return true;
+			}
+		}
+	}
+	
+	// To list
+	public ArrayList<Integer> toList(){
+		return this.toList2(new ArrayList<Integer>());
+	}
+	
+	private ArrayList<Integer> toList2(ArrayList<Integer> list){
+		if (this.isEmpty()){
+		}else{
+			list.add(this.getRootValue());
+			this.getD().toList2(list);
+			this.getG().toList2(list);
+			
+		}
+		return list;
+	}
+	
 }
