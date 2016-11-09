@@ -76,6 +76,7 @@ public class testOne {
 			assertTrue(l2.get(i)<l2.get(i+1));
 		}
 		
+		assertTrue(c.isValidABR());
 		
 	}
 	
@@ -88,8 +89,10 @@ public class testOne {
 		
 		ArrayList<Integer> l1=new ArrayList<Integer>();
 		arbre2.toList(l1);
+		
 		//Incoherence :
-		assertTrue(l1.get(1)>l1.get(2));		
+		assertTrue(l1.get(1)>l1.get(2));	
+		assertFalse(arbre2.isValidABR());
 	}
 	
 }
