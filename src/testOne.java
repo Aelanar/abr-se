@@ -93,6 +93,8 @@ public class testOne {
 		//Incoherence :
 		assertTrue(l1.get(1)>l1.get(2));	
 		assertFalse(arbre2.isValidABR());
+	// Ne fonctionne que si on créer un arbre à la main
+	//La fonction insert conserve dans tous les cas la structure
 	}
 	
 }

@@ -146,8 +146,8 @@ public class ABR {
 	}
 	//Find Plus proche successeur sous arbre droit 
 	public ABR findPlusProcheSuccGauche(){
-		if(this.isEmpty()){
-			return new ABR();
+		if(this.getG().getG().isEmpty()){
+			return this;
 		}else{
 				return this.getG().findPlusProcheSuccGauche();
 			}
@@ -169,9 +169,19 @@ public class ABR {
 			}
 		}else{
 			//Cas 2 enfants
-			ABR ValnoeudAEchanger = arbreADel.findPlusProcheSuccGauche();
+			ABR parentDuNoeudAEchanger =arbreADel.findPlusProcheSuccGauche();
+			ABR ValnoeudAEchanger = parentDuNoeudAEchanger.getG();
 			//Echange des noeuds
+			arbreADel.brancheD = new ABR();
+			arbreADel.brancheG = new ABR();
 			
+			//Il faudrait chopper le parent du noeud a Del si il existe
+			parentDuNoeudAEchanger.brancheG = arbreADel;
+			ValnoeudAEchanger.brancheD = BrancheDroite;
+			ValnoeudAEchanger.brancheG = BrancheGauche;
+			//parentDuNoeudADel.brancheG ou brancheD = ValnoeudAEchanger;
+			
+			delete(a);
 		}
 		
 		
