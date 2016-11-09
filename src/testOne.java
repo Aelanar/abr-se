@@ -1,6 +1,8 @@
 package ABR;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class testOne {
@@ -35,5 +37,30 @@ public class testOne {
 		assertTrue(a.getD().getRootValue()==2);
 		assertTrue(a.getG().getRootValue()==0);
 	}
-
+	
+	@Test
+	public void testContains(){
+		ABR a = new ABR();
+		a.insert(1);
+		a.insert(2);
+		a.insert(0);
+		assertTrue(a.contains(0));
+		assertTrue(a.contains(1));
+		assertTrue(a.contains(2));
+		assertFalse(a.contains(42));
+	}
+	@Test
+	public void testToList(){
+		ABR a = new ABR();
+		a.insert(1);
+		a.insert(2);
+		a.insert(0);
+		ArrayList<Integer> b = a.toList();
+		assertTrue(b.contains(0));
+		assertTrue(b.contains(1));
+		assertTrue(b.contains(2));
+		assertFalse(b.contains(42));
+	}
+	
+	
 }
