@@ -71,9 +71,25 @@ public class testOne {
 		assertTrue(l1.contains(2));
 		assertFalse(l1.contains(42));
 		
-		//System.out.print(l2);
+		//Test de la croissance (list bien triée)
+		for (int i=0; i<l2.size()-1; i++){
+			assertTrue(l2.get(i)<l2.get(i+1));
+		}
+		
 		
 	}
 	
+	@Test
+	public void testBugListeTriée(){
+		ABR vide= new ABR();
+		ABR un = new ABR(1,vide,vide);
+		ABR arbre1 = new ABR(2,un, un);
+		ABR arbre2 = new ABR(3,arbre1, arbre1);
+		
+		ArrayList<Integer> l1=new ArrayList<Integer>();
+		arbre2.toList(l1);
+		//Incoherence :
+		assertTrue(l1.get(1)>l1.get(2));		
+	}
 	
 }
