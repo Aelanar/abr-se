@@ -1,6 +1,7 @@
 package ABR;
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -31,6 +32,7 @@ public class testOne {
 	public void testInsert(){
 		ABR a = new ABR();
 		a.insert(1);
+		a.insert(1);
 		a.insert(2);
 		a.insert(0);
 		assertTrue(a.nbElements() == 3);
@@ -59,15 +61,17 @@ public class testOne {
 		for (int i=0;i<30;i++){
 			c.insert(i);
 		}
-		ArrayList<Integer> b = a.toList();
-		ArrayList<Integer> d = c.toList();
+		ArrayList<Integer> l1=new ArrayList<Integer>();
+		ArrayList<Integer> l2=new ArrayList<Integer>();
+		a.toList(l1);
+		c.toList(l2);
 		
-		assertTrue(b.contains(0));
-		assertTrue(b.contains(1));
-		assertTrue(b.contains(2));
-		assertFalse(b.contains(42));
+		assertTrue(l1.contains(0));
+		assertTrue(l1.contains(1));
+		assertTrue(l1.contains(2));
+		assertFalse(l1.contains(42));
 		
-		System.out.print(d);
+		//System.out.print(l2);
 		
 	}
 	

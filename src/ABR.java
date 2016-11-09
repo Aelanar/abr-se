@@ -1,5 +1,5 @@
 package ABR;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ABR {
 
@@ -58,7 +58,9 @@ public class ABR {
 			this.brancheG = new ABR();
 			return;
 		}else{
-			if(this.getRootValue()>value){
+			if (this.getRootValue()==value){
+				return;
+			}else if(this.getRootValue()>value){
 				this.getG().insert(value);
 			}else{
 				this.getD().insert(value);
@@ -83,19 +85,14 @@ public class ABR {
 	}
 	
 	// To list
-	public ArrayList<Integer> toList(){
-		return this.toList2(new ArrayList<Integer>());
-	}
-	
-	private ArrayList<Integer> toList2(ArrayList<Integer> list){
+	public void toList(List<Integer> list){
 		if (this.isEmpty()){
 		}else{
-			this.getG().toList2(list);
+			this.getG().toList(list);
 			list.add(this.getRootValue());
-			this.getD().toList2(list);
+			this.getD().toList(list);
 			
 		}
-		return list;
 	}
 	
 }
