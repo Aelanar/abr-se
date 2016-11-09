@@ -20,15 +20,15 @@ public class ABR {
 		this.estVide = false;
 	}
 	
-	//Getter
+	//Getter (Package Protected)
 	
-	public ABR getG(){
+	 ABR getG(){
 		return this.brancheG;
 	}
-	public ABR getD(){
+	 ABR getD(){
 		return this.brancheD;
 	}
-	public int getRootValue(){
+	int getRootValue(){
 		return this.valueNode;
 	}
 	
@@ -48,6 +48,7 @@ public class ABR {
 			return 1 + this.getG().nbElements() + this.getD().nbElements();
 		}
 	}
+	
 	
 	//Insert
 	public void insert(int value){
@@ -69,6 +70,7 @@ public class ABR {
 		
 	}
 	
+	
 	//Contains
 	public boolean contains(int value){
 		if(this.isEmpty()){
@@ -84,6 +86,7 @@ public class ABR {
 		}
 	}
 	
+	
 	// To list
 	public void toList(List<Integer> list){
 		if (this.isEmpty()){
@@ -95,6 +98,37 @@ public class ABR {
 		}
 	}
 	
+	//Is Valid ABR tree
+	public boolean isValidABR(){
+		if (this.isEmpty()){
+			return true;
+		}else{
+			return this.getG().isValidABRGauche(this.getRootValue()) &  this.getD().isValidABRDroite(this.getRootValue());
+		}
+
+	}
+	private boolean isValidABRGauche(int noeudPrecedent){
+		if (this.isEmpty()){
+			return true;
+		}else if(this.getRootValue()==noeudPrecedent){
+			return false;
+		}else if(noeudPrecedent > this.getRootValue()){
+			return this.getG().isValidABRGauche(this.getRootValue()) &  this.getD().isValidABRDroite(this.getRootValue());
+		}else{
+			return false;
+		}
+	}
+	private boolean isValidABRDroite(int noeudPrecedent){
+		if (this.isEmpty()){
+			return true;
+		}else if(this.getRootValue()==noeudPrecedent){
+			return false;
+		}else if(noeudPrecedent < this.getRootValue()){
+			return this.getG().isValidABRGauche(this.getRootValue()) &  this.getD().isValidABRDroite(this.getRootValue());
+		}else{
+			return false;
+		}
+	}
 	
 	
 }
